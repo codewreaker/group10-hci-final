@@ -1,0 +1,61 @@
+/* Thi sis my personalised CSS for the final project */
+body{
+    background-color: #ededed;
+}
+
+
+
+nav{
+    height: 70px;
+}
+
+
+.card{
+    margin: auto;
+    margin-top: 30px;
+    width: 100%;
+}
+
+@media only screen and (max-width:600px) {
+.card{
+    margin: auto;
+    margin-top: 30px;
+    width: 89%;
+}
+}
+
+.tabs{
+    width: 50% !important;
+    margin-left: 80px;
+}
+
+
+
+
+nav .brand-logo{
+    position: relative;
+    left: 80px;
+}
+
+.fixed-action-btn ul li:hover{
+    background-color: transparent;
+}
+
+
+
+.well {
+    border: 5px solid black;
+}
+
+.width-80 {
+    width: 80%;
+}
+
+
+
+
+
+.currency {
+    font-size: 1.9em;
+    font-weight: 400;
+}
