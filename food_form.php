@@ -11,9 +11,9 @@
 
 	<body>
 		<form action='food_form.php' method='POST'>
-			Food Name <input type='text'>
-			Description <textarea></textarea>
-			Food Price <input type='text'>
+			Food Name <input type='text' name='fn'>
+			Description <textarea name='desc'></textarea>
+			Food Price <input type='text' name='fp'>
 			Vendor<select name="vendor" class="browser-default">										
 					<option value="0">- select -</option>
 					<?php
@@ -23,19 +23,36 @@
 						$row = $obj->fetch();
 						$i = 0;
 						while ($row){
-							echo "<option value='$i++'>$row[vendor]</option>";
-							$row = $obj->fetch();	
+							echo "<option value='$i'>$row[vendor]</option>";
+							$row = $obj->fetch();
+							$i++;	
 						}
 					?>
 				</select>
-			Type<select name="vendor" class="browser-default">										
+			Type<select name="type" class="browser-default">										
 					<option value="" disabled selected>- select -</option>
 					<option value="1">Food</option>
 					<option value="2">Snack</option>
 				</select>
-			Image<input>
+			Image
+			<input type='submit' value='Add'>
 			
 		</form>
+
+		<?php
+			if(isset($_REQUEST['fn'])){
+				$name = $_REQUEST['fn'];
+				$desc = $_REQUEST['desc'];
+				$price = $_REQUEST['fp'];
+				$ven = $_REQUEST['vendor'];
+				$type = $_REQUEST['type'];
+
+				// include_once ("food_class.php");
+				$obj = new food();
+				
+				$obj ->add_food($name,$desc,$price,$ven,$type);
+			}
+		?>
 		<!--Import jQuery before materialize.js-->
 	    <script type="text/javascript" src="assets/js/jquery-2.1.1.min.js"></script>
 	    <script type="text/javascript" src="assets/js/materialize.min.js"></script>
