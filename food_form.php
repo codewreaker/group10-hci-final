@@ -10,7 +10,7 @@
 	</head>
 
 	<body>
-		<form action='food_form.php' method='POST'>
+		<form action='food_form.php' method='POST' enctype='multipart/form-data'>
 			Food Name <input type='text' name='fn'>
 			Description <textarea name='desc'></textarea>
 			Food Price <input type='text' name='fp'>
@@ -21,9 +21,9 @@
 						$obj = new food();
 						$obj ->get_vendors();
 						$row = $obj->fetch();
-						$i = 0;
+						$i = 1;
 						while ($row){
-							echo "<option value='$i'>$row[vendor]</option>";
+							echo "<option value='$row[user_id]'>$row[vendor]</option>";
 							$row = $obj->fetch();
 							$i++;	
 						}
@@ -34,7 +34,7 @@
 					<option value="1">Food</option>
 					<option value="2">Snack</option>
 				</select>
-			Image
+			Image<input type="file" name="fileToUpload" id="fileToUpload">
 			<input type='submit' value='Add'>
 			
 		</form>
