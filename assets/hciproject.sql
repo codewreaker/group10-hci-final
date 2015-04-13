@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 13, 2015 at 02:53 AM
+-- Generation Time: Apr 13, 2015 at 03:52 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -16,9 +16,9 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
---
--- Database: `hciproject`
---
+
+use `hciproject`;
+
 
 -- --------------------------------------------------------
 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `c_credentials` (
 --
 
 INSERT INTO `c_credentials` (`user_id`, `username`, `pword`, `vendor`) VALUES
-(1, 'Nana Ama', '24c9e15e52afc47c225b757e7bee1f9d', 'Akonor');
+(1, 'nana_ama', '24c9e15e52afc47c225b757e7bee1f9d', 'Akonor');
 
 -- --------------------------------------------------------
 
