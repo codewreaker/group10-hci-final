@@ -13,7 +13,7 @@ $(document).ready(function() {
         var dataString = 'opt=1&pn=' + name + '&pw=' + pword;
         var obj = sendRequest(dataString);
         if (obj.result == 1) {
-            alert(obj.message);
+            window.location.replace("food_form.php");
         } else {
             alert("failed potoo");
         }

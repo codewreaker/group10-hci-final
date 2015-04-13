@@ -10,10 +10,36 @@
 	</head>
 
 	<body>
+	<div class="fixed-action-btn" style="top: 65px; right: 22px;">
+	<div href="#" data-activates="mobile-demo" class="button-floating btn-floating btn-large red">
+	<i class="mdi-navigation-menu"></i>
+	</div>
+        </div>
+	<div class="container">
+	<div class="card">
+	<div class="upload-section">
 		<form action='food_form.php' method='POST' enctype='multipart/form-data'>
-			Food Name <input type='text' name='fn'>
-			Description <textarea name='desc'></textarea>
-			Food Price <input type='text' name='fp'>
+			<div class="row">
+                                    <div class="input-field col s12 ">
+                                        <i class="mdi-action-account-circle prefix"></i>
+                                        <input  name="fn" type="text" class="validate">
+                                        <label for="first_name">Food Name</label>
+                                    </div>
+                                </div>
+			<div class="row">
+        <div class="input-field col s12">
+          <textarea name="desc" class="materialize-textarea"></textarea>
+          <label for="textarea1">Description</label><div class="row">
+                    </div>
+                </div>
+                        </div>
+			<div class="row">
+                                    <div class="input-field col s12 ">
+                                        <i class="mdi-action-account-circle prefix"></i>
+                                        <input  name="fp" type="text" class="validate">
+                                        <label for="food price">Food Price</label>
+                                    </div>
+                                </div>
 			Vendor<select name="vendor" class="browser-default">										
 					<option value="0">- select -</option>
 					<?php
@@ -97,6 +123,9 @@
 				$obj ->add_food($name,$desc,$price,$ven,$type, $img);
 			}
 		?>
+		</div>
+        </div>
+        </div>
 		<!--Import jQuery before materialize.js-->
 	    <script type="text/javascript" src="assets/js/jquery-2.1.1.min.js"></script>
 	    <script type="text/javascript" src="assets/js/materialize.min.js"></script>

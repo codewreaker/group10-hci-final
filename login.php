@@ -34,14 +34,14 @@
                                 <div class="row">
                                     <div class="input-field col s12 ">
                                         <i class="mdi-action-account-circle prefix"></i>
-                                        <input placeholder="Placeholder" id="login-username" type="text" class="validate">
+                                        <input  id="login-username" type="text" class="validate">
                                         <label for="first_name">Username</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <i class="mdi-action-https prefix"></i>
-                                        <input placeholder="password" id="login-pword" type="password" class="validate">
+                                        <input  id="login-pword" type="password" class="validate">
                                         <label for="password">Password</label>
                                     </div>
                                 </div>
