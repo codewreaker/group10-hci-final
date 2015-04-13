@@ -12,19 +12,21 @@ $option = $_REQUEST['opt'];
 
 switch($option){
     case 1:
-        include_once("t_task.php");
-        $obj = new t_task();
-        $task_name = $_POST['tn'];
-        $description = $_POST['desc'];
-        $admin = $_POST['admin'];
-        $personnel=$_POST['tp'];
-        $due_date = $_POST['td'];
-if(!$obj->add_task($task_name,$description,$personnel,$due_date)){
-        echo '{"result":0,"message":"Failed"}';
-    }
-    else{
-        echo '{"result":1,"message":"Successfully Added Task"}';
-}
+        include_once("adb.php");
+        $obj = new adb();
+        $username = $_POST['pn'];
+        $pword = md5($_POST['pw']);
+        $str_query = "SELECT username, pword, vendor from c_credentials";
+        $count = mysql_num_rows($obj->query($str_query));
+        $row = $obj->fetch();
+        for($i=0;$i<$count;$i++){
+            if($username==$row['username'] && $pword==$row['pword']){
+                echo '{"result":1,"message":"successfully logged in"}';
+                return;
+            }
+            $row = $obj->fetch();
+            }
+            echo '{"result":0,"message":"failed to login"}';
         break;
     case 2:
          include_once("t_task.php");

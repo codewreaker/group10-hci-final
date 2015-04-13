@@ -29,7 +29,32 @@
                         <span class="card-title grey-text text-darken-4">Login <i class="mdi-navigation-close right"></i></span>
                         <p>Enter Your Username and Password to Login.</p>
                         <div class="row">
-                            <!-- Form for logging in -->
+                           <!-- Form for logging in -->
+                            <form class="col s12 ">
+                                <div class="row">
+                                    <div class="input-field col s12 ">
+                                        <i class="mdi-action-account-circle prefix"></i>
+                                        <input placeholder="Placeholder" id="login-username" type="text" class="validate">
+                                        <label for="first_name">Username</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <i class="mdi-action-https prefix"></i>
+                                        <input placeholder="password" id="login-pword" type="password" class="validate">
+                                        <label for="password">Password</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12 i">
+                                        <div class="btn waves-effect waves-light" id="login-btn">Submit
+                                            <i class="mdi-content-send right"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <!--/ Form for Logging in -->
+                            <!-- Form for logging in --
                             <form class="col s12 " action="operations/login_fun.php" method="post">
                                 <div class="row">
                                     <div class="input-field col s12 ">
@@ -53,7 +78,7 @@
                                     </div>
                                 </div>
                             </form>
-                            <!--/ Form for Logging in -->
+                            --/ Form for Logging in -->
                         </div>
                     </div>
                 </div>
@@ -67,6 +92,7 @@
     <script type="text/javascript" src="assets/js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="assets/js/materialize.min.js"></script>
     <script type="text/javascript" src="assets/js/script.js"></script>
+    <script type="text/javascript" src="assets/js/ajax.js"></script>
     <!--/ Script Files -->
 </body>
 
