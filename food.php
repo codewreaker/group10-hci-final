@@ -45,7 +45,7 @@
         <div class="nav-wrapper">
             <a href="#" class=" brand-logo">Carte D'Aliment</a>
             <div class="fixed-action-btn" style="top: 65px; right: 22px;">
-                <a href="#" data-activates="mobile-demo" class="button-floating btn-floating btn-large red"><i class="mdi-navigation-menu"></i></a>
+                <a href="#" data-activates="mobile-demo" class="button-floating btn-floating btn-large red" id="side-nav-btn"><i class="mdi-navigation-menu"></i></a>
                 <ul>
                     <li>
                         <a class="btn-floating btn-large red  darken-2 z-depth-2 tooltipped" data-tooltip="Home" data-position="left">

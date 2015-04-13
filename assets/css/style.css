@@ -100,3 +100,8 @@ nav .brand-logo{
     background-color: #fff;
     border-radius: 10px;
 }
+
+.hide {
+    display: none;
+    transition: 3s ease;
+}

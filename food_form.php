@@ -10,12 +10,12 @@
 	</head>
 
 	<body>
-	<div class="fixed-action-btn" style="top: 65px; right: 22px;">
-	<div href="#" data-activates="mobile-demo" class="button-floating btn-floating btn-large red">
+	<div class="fixed-action-btn" style="top: 60px; right:300px;">
+	<div  class="button-floating btn-floating btn-large red" id="add-form">
 	<i class="mdi-navigation-menu"></i>
 	</div>
         </div>
-	<div class="container">
+	<div class="container hide" id="hidden-layer">
 	<div class="card">
 	<div class="upload-section">
 		<form action='food_form.php' method='POST' enctype='multipart/form-data'>
@@ -96,7 +96,7 @@
 				    $uploadOk = 0;
 				}
 				// Check file size
-				if ($_FILES["fileToUpload"]["size"] > 500000) {
+				if ($_FILES["fileToUpload"]["size"] > 700000) {
 				    echo "Sorry, your file is too large.";
 				    $uploadOk = 0;
 				}
@@ -130,6 +130,7 @@
 	    <script type="text/javascript" src="assets/js/jquery-2.1.1.min.js"></script>
 	    <script type="text/javascript" src="assets/js/materialize.min.js"></script>
 	    <script type="text/javascript" src="assets/js/script.js"></script>
+	    <script type="text/javascript" src="assets/js/ajax.js"></script>
 	</body>
 </html>
 
