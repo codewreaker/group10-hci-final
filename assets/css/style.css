@@ -59,3 +59,37 @@ nav .brand-logo{
     font-size: 1.9em;
     font-weight: 400;
 }
+
+#login .card {
+    display: block;
+    margin: 1.2in auto;
+    margin-left: 0.3in;
+    height: 4in;
+}
+
+
+
+#login .card img{
+    display: block;
+    width: 1.5in;
+    height: 1.5in;
+    margin: 30px auto;
+    border-radius: 300px;
+}
+
+#login #title{
+    display: block;
+    text-align: center;
+    font-family:cursive;
+    font-size: 2em;
+    color: #e74c3c;
+    margin-top: -30px;
+    margin-bottom: 30px;
+}
+
+#login a{
+    display: block;
+    margin: 0px auto;
+    text-align: center;
+    font-size: 1.3em;
+}
