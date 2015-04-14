@@ -48,7 +48,7 @@
                 <a href="#" data-activates="mobile-demo" class="button-floating btn-floating btn-large red" id="side-nav-btn"><i class="mdi-navigation-menu"></i></a>
                 <ul>
                     <li>
-                        <a class="btn-floating btn-large red  darken-2 z-depth-2 tooltipped" data-tooltip="Home" data-position="left">
+                        <a href="login.php" class="btn-floating btn-large red  darken-2 z-depth-2 tooltipped" data-tooltip="Login as Admin" data-position="left">
                             <i class="large mdi-action-home"></i>
                         </a>
                     </li>
@@ -203,37 +203,225 @@
 
         </div>
         <div id="test2" class="col s12">
-            <div class="card s12 m6">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="assets/images/office.jpg">
+          <div>
+                <!-- Food Cards -->
+                <div class="row width-80">
+                    <div class="col s12 m6 l3">
+                        <div class="card">
+                            <div class="card-image waves-effect waves-block waves-light">
+                              <div class="grey-out hide"><i class="mdi-av-not-interested"></i></div>
+                                <img class="activator" src="assets/images/drink6.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">Bruschettas<i class="mdi-navigation-more-vert right"></i></span>
+                                <p><span class="currency">&#162; 35</span>
+                                </p>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">Bruschettas<i class="mdi-navigation-close right"></i></span>
+                                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                <a class="btn-floating btn-large waves-effect waves-light red right"><i class="mdi-action-favorite"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m6 l3">
+                        <div class="card">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="assets/images/drink1.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">Beef Stake<i class="mdi-navigation-more-vert right"></i></span>
+                                <p><span class="currency">&#162; 35</span>
+                                </p>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">Beef Stake<i class="mdi-navigation-close right"></i></span>
+                                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                <a class="btn-floating btn-large waves-effect waves-light red right"><i class="mdi-action-favorite"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m6 l3">
+                        <div class="card">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="assets/images/drink5.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">Sphaggerrotti<i class="mdi-navigation-more-vert right"></i></span>
+                                <p><span class="currency">&#162; 35</span>
+                                </p>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">Sphaggerrotti<i class="mdi-navigation-close right"></i></span>
+                                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                <a class="btn-floating btn-large waves-effect waves-light red right"><i class="mdi-action-favorite"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m6 l3">
+                        <div class="card">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="assets/images/drink4.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">Samperelli<i class="mdi-navigation-more-vert right"></i></span>
+                                <p><span class="currency">&#162; 35</span>
+                                </p>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">Samperelli<i class="mdi-navigation-close right"></i></span>
+                                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                <a class="btn-floating btn-large waves-effect waves-light red right"><i class="mdi-action-favorite"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m6 l3">
+                        <div class="card">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="assets/images/drink3.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">Fod 1 <i class="mdi-navigation-more-vert right"></i></span>
+                                <p><span class="currency">&#162; 35</span>
+                                </p>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">Food 1 <i class="mdi-navigation-close right"></i></span>
+                                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                <a class="btn-floating btn-large waves-effect waves-light red right"><i class="mdi-action-favorite"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m6 l3">
+                        <div class="card">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="assets/images/drink2.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">Crazy Burger<i class="mdi-navigation-more-vert right"></i></span>
+                                <p><span class="currency">&#162; 35</span>
+                                </p>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">Food 1 <i class="mdi-navigation-close right"></i></span>
+                                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                <a class="btn-floating btn-large waves-effect waves-light red right"><i class="mdi-action-favorite"></i></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">Food 2 <i class="mdi-navigation-more-vert right"></i></span>
-                    <p><a href="#">This is a link</a>
-                    </p>
-                </div>
-                <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Food 2 <i class="mdi-navigation-close right"></i></span>
-                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                    <a class="btn-floating btn-large waves-effect waves-light red right"><i class="mdi-action-favorite"></i></a>
-                </div>
+                <!-- Food Card Ends Here -->
             </div>
         </div>
         <div id="test3" class="col s12">
-            <div class="card s12 m6">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="assets/images/office.jpg">
+                   <div>
+                <!-- Food Cards -->
+                <div class="row width-80">
+                    <div class="col s12 m6 l3">
+                        <div class="card">
+                            <div class="card-image waves-effect waves-block waves-light">
+                              <div class="grey-out hide"><i class="mdi-av-not-interested"></i></div>
+                                <img class="activator" src="assets/images/food6.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">Bruschettas<i class="mdi-navigation-more-vert right"></i></span>
+                                <p><span class="currency">&#162; 35</span>
+                                </p>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">Bruschettas<i class="mdi-navigation-close right"></i></span>
+                                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                <a class="btn-floating btn-large waves-effect waves-light red right"><i class="mdi-action-favorite"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m6 l3">
+                        <div class="card">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="assets/images/food1.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">Beef Stake<i class="mdi-navigation-more-vert right"></i></span>
+                                <p><span class="currency">&#162; 35</span>
+                                </p>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">Beef Stake<i class="mdi-navigation-close right"></i></span>
+                                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                <a class="btn-floating btn-large waves-effect waves-light red right"><i class="mdi-action-favorite"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m6 l3">
+                        <div class="card">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="assets/images/food2.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">Sphaggerrotti<i class="mdi-navigation-more-vert right"></i></span>
+                                <p><span class="currency">&#162; 35</span>
+                                </p>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-3">Sphaggerrotti<i class="mdi-navigation-close right"></i></span>
+                                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                <a class="btn-floating btn-large waves-effect waves-light red right"><i class="mdi-action-favorite"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m6 l3">
+                        <div class="card">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="assets/images/food4.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">Samperelli<i class="mdi-navigation-more-vert right"></i></span>
+                                <p><span class="currency">&#162; 35</span>
+                                </p>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">Samperelli<i class="mdi-navigation-close right"></i></span>
+                                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                <a class="btn-floating btn-large waves-effect waves-light red right"><i class="mdi-action-favorite"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m6 l3">
+                        <div class="card">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="assets/images/food1.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">Fod 1 <i class="mdi-navigation-more-vert right"></i></span>
+                                <p><span class="currency">&#162; 35</span>
+                                </p>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">Food 1 <i class="mdi-navigation-close right"></i></span>
+                                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                <a class="btn-floating btn-large waves-effect waves-light red right"><i class="mdi-action-favorite"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m6 l3">
+                        <div class="card">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="assets/images/food5.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">Crazy Burger<i class="mdi-navigation-more-vert right"></i></span>
+                                <p><span class="currency">&#162; 35</span>
+                                </p>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">Food 1 <i class="mdi-navigation-close right"></i></span>
+                                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                <a class="btn-floating btn-large waves-effect waves-light red right"><i class="mdi-action-favorite"></i></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">Food 3 <i class="mdi-navigation-more-vert right"></i></span>
-                    <p><a href="#">This is a link</a>
-                    </p>
-                </div>
-                <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Food 3 <i class="mdi-navigation-close right"></i></span>
-                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                    <a class="btn-floating btn-large waves-effect waves-light red right"><i class="mdi-action-favorite"></i></a>
-                </div>
+                <!-- Food Card Ends Here -->
             </div>
         </div>
         <!--/Tabs for Food Section -->
