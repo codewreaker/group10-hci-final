@@ -13,7 +13,7 @@ $(document).ready(function(e) {
             success: function(data) // A function to be called if request succeeds
             {
                 $('#loading').hide();
-                $("#message").html(data);
+                $("#message").html("Image Uploaded Succesfully");
             }
         });
     }));
