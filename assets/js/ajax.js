@@ -4,6 +4,7 @@
 
 
         displayTableJSON();
+        favorite();
         /* Functions Needed */
         $("#login-btn").click(function() {
             login();
@@ -14,7 +15,10 @@
             displayTableJSON();
         });
 
-        favorite();
+
+
+
+
 
 
 
@@ -106,29 +110,24 @@
 
         /* A function that increases the likes or dislikes of Food */
         function favorite(){
-                $(".mdi-action-thumb-up").click(function(){
-                 var id = this.id;
-                 alert(id);
-                var val_id = $(".mdi-action-thumb-up span").html();
+            $("body").on('click','.mdi-action-thumb-up',function(){
+                var id = this.id;
+                var val_id = $(this).children('span').html();
                 val_id++;
-                alert(val_id);
                 var dataString = 'opt=4&type=up&val='+val_id+'&id='+id;
-                sendRequest(dataString);
                 $obj = sendRequest(dataString);
+                displayTableJSON();
             });
 
-            $(".mdi-action-thumb-down").click(function(){
+
+            $("body").on('click','.mdi-action-thumb-down',function(){
                 var id = this.id;
-                alert(id);
-                var val_id = $(".mdi-action-thumb-down span").html();
+                var val_id = $(this).children('span').html();
                 val_id++;
-                alert(val_id);
                 var dataString = 'opt=4&type=down&val='+val_id+'&id='+id;
                 $obj = sendRequest(dataString);
+                displayTableJSON();
             });
-
-
-
         }
 
 
