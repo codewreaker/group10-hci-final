@@ -55,14 +55,15 @@ switch($option){
         $obj = new t_task();
         break;
     case 7:
-        include_once("t_task.php");
-        $obj = new t_task();
-        if(!$obj->get_task()){
+        include_once("adb.php");
+        $obj = new adb();
+        $str_query = "SELECT * FROM c_meals";
+        if(!$obj->query($str_query)){
             echo '{"result":0,"message":"failed to fetch data"}';
             return;
         }else{
             $row=$obj->fetch();
-	       echo '{"result":1,"tasks":[';	/*start of json object*/
+	       echo '{"result":1,"data":[';	/*start of json object*/
 	       while($row){
 		      echo json_encode($row);/*convert the result array to json object*/
 		      $row=$obj->fetch();
