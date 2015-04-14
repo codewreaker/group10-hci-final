@@ -1,5 +1,8 @@
     /* This is where all the ajax calls are made */
     $(document).ready(function() {
+        var selectedOption = "";
+
+
         displayTableJSON();
         /* Functions Needed */
         $("#login-btn").click(function() {
@@ -10,6 +13,8 @@
             save_food();
             displayTableJSON();
         });
+
+        favorite();
 
 
 
@@ -72,11 +77,10 @@
                 var start;
                 var mid = "";
                 var end;
+                start = '<div id="test1" class="col s12"><div class=""><div class="row width-80">';
                 for (var i = 0; i < data.length; i++) {
-                    mid = mid+'<div id="test1" class="col s12">'+
-                    '<div class="">'+
-                        '<div class="row width-80">'+
-                            '<div class="col s12 m6 l3">'+
+                  mid = mid+'<div class="col s12 m6 l3" id="food-element">'+
+                            '<input type="hidden" value="'+data[i].meal_id+'" id="element_id">'+
                             '<div class="card">'+
                             '<div class="card-image waves-effect waves-block waves-light">'+
                             '<div class="grey-out hide"><i class="mdi-av-not-interested"></i></div>'+
@@ -85,19 +89,50 @@
                             '<div class="card-content">'+
         '<span class="card-title activator grey-text text-darken-4">'+data[i].meal_name+'<i class="mdi-navigation-more-vert right"></i></span>'+
                             '<p><span class="currency">&#162;'+data[i].meal_price +'</span></p>'+
+                            '<div ><span id="fav-btns"><i class="mdi-action-thumb-down" id="'+data[i].meal_id+'"><span id="num_to_add">'+data[i].rating_against+'</span></i><i class="mdi-action-thumb-up" id="'+data[i].meal_id+'"><span id="num_to_add">'+data[i].rating_for+'</span></i></span></div>'+
                             '</div>'+
                             '<div class="card-reveal">'+
                     '<span class="card-title grey-text text-darken-4">'+data[i].meal_name+'<i class="mdi-navigation-close right"></i></span>'+
                             '<p>' + data[i].meal_desc + '</p>'+
-                            '<a class="btn-floating btn-large waves-effect waves-light red right"><i class="mdi-action-favorite"></i></a>'+
-                            '</div></div></div></div></div></div>';
+                            '</div></div></div>';
                 }
-                var content = mid;
+                end = '</div></div></div>';
+                var content = start+mid+end;
                 $("#content-area").html(content);
             } else {
                 alert("Failed");
             }
         }
+
+        /* A function that increases the likes or dislikes of Food */
+        function favorite(){
+                $(".mdi-action-thumb-up").click(function(){
+                 var id = this.id;
+                 alert(id);
+                var val_id = $(".mdi-action-thumb-up span").html();
+                val_id++;
+                alert(val_id);
+                var dataString = 'opt=4&type=up&val='+val_id+'&id='+id;
+                sendRequest(dataString);
+                $obj = sendRequest(dataString);
+            });
+
+            $(".mdi-action-thumb-down").click(function(){
+                var id = this.id;
+                alert(id);
+                var val_id = $(".mdi-action-thumb-down span").html();
+                val_id++;
+                alert(val_id);
+                var dataString = 'opt=4&type=down&val='+val_id+'&id='+id;
+                $obj = sendRequest(dataString);
+            });
+
+
+
+        }
+
+
+
 
 
 

@@ -16,6 +16,8 @@ nav{
     width: 100%;
 }
 
+
+
 @media only screen and (max-width:600px) {
 .card{
     margin: auto;
@@ -43,16 +45,9 @@ nav .brand-logo{
 
 
 
-.well {
-    border: 5px solid black;
-}
-
 .width-80 {
     width: 80%;
 }
-
-
-
 
 
 .currency {
@@ -158,3 +153,44 @@ button[value="Upload"]{
     border-radius: 3px;
 }
 
+#fav-btns i{
+    margin: 0px 5px 0px 5px;
+    position: relative;
+    background-color:#ea454b;
+    color: #fff;
+    bottom: 20px;
+    border:3px solid inherit;
+    border-radius: 30px;
+    right: -100px;
+    font-size: 1.5em;
+    width: 40px;
+    padding: 10px;
+    box-shadow: 0px 2px 5px #888888;
+    z-index: 5;
+}
+
+#fav-btns i:hover{
+ transition: 0.3s ease-in;
+  box-shadow: 0px 4px 10px #888888;
+}
+
+#fav-btns span{
+    position: absolute;
+    font-size: 0.6em;
+    font-family: "Roboto",sans-serif;
+    border: 1px solid none;
+    border-radius: 100px;
+    width:20px;
+    height:20px;
+    color: black;
+    text-align: center;
+    background-color:pink;
+    z-index: 6;
+    box-shadow: 0px 4px 10px #888888;
+    bottom: 25px;
+}
+
+.card p{
+    position: relative;
+    top: 20px;
+}
