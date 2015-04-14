@@ -52,6 +52,8 @@
             } else if (obj.result == 0) {
                 alert(obj.message);
             }
+            displayTableJSON();
+            window.location.replace("food.html");
         }
 
 
@@ -81,7 +83,6 @@
                 var start;
                 var mid = "";
                 var end;
-                start = '<div id="test1" class="col s12"><div class=""><div class="row width-80">';
                 for (var i = 0; i < data.length; i++) {
                   mid = mid+'<div class="col s12 m6 l3" id="food-element">'+
                             '<input type="hidden" value="'+data[i].meal_id+'" id="element_id">'+
@@ -99,10 +100,15 @@
                     '<span class="card-title grey-text text-darken-4">'+data[i].meal_name+'<i class="mdi-navigation-close right"></i></span>'+
                             '<p>' + data[i].meal_desc + '</p>'+
                             '</div></div></div>';
+                        if(data[i].meal_type=="food"){
+                            $("#food").html(mid);
+                        }else if(data[i].meal_type=="drinks"){
+                            $("#drinks").html(mid);
+                        }else if(data[i].meal_type=="snacks"){
+                            $("#snacks").html(mid);
+                        }
                 }
-                end = '</div></div></div>';
-                var content = start+mid+end;
-                $("#content-area").html(content);
+
             } else {
                 alert("Failed");
             }
