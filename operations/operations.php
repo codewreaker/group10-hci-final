@@ -12,33 +12,10 @@ $option = $_REQUEST['opt'];
 
 switch($option){
     case 1:
-        include_once("adb.php");
-        $obj = new adb();
-        $username = $_POST['pn'];
-        $pword = md5($_POST['pw']);
-        $str_query = "SELECT username, pword, vendor from c_credentials";
-        $count = mysql_num_rows($obj->query($str_query));
-        $row = $obj->fetch();
-        for($i=0;$i<$count;$i++){
-            if($username==$row['username'] && $pword==$row['pword']){
-                echo '{"result":1,"message":"successfully logged in"}';
-                return;
-            }
-            $row = $obj->fetch();
-            }
-            echo '{"result":0,"message":"failed to login"}';
+        login();
         break;
     case 2:
-         include_once("t_task.php");
-         $obj = new t_task();
-         $task_id = $_POST['tid'];
-         if(!$obj->delete_task($task_id)){
-            echo '{"result":0,"message":"Failed To Delete"}';
-            return;
-         }
-         else{
-            echo '{"result":1,"message":"Succesfully Deleted"}';
-         }
+         add_food();
         break;
     case 3:
         include_once("t_task.php");
@@ -111,5 +88,41 @@ switch($option){
         break;
     default:
 }
+
+/* A function that logs in with Ajax */
+function login(){
+    include_once("adb.php");
+        $obj = new adb();
+        $username = $_POST['pn'];
+        $pword = md5($_POST['pw']);
+        $str_query = "SELECT username, pword, vendor from c_credentials";
+        $count = mysql_num_rows($obj->query($str_query));
+        $row = $obj->fetch();
+        for($i=0;$i<$count;$i++){
+            if($username==$row['username'] && $pword==$row['pword']){
+                echo '{"result":1,"message":"successfully logged in"}';
+                return;
+            }
+            $row = $obj->fetch();
+            }
+            echo '{"result":0,"message":"failed to login"}';
+}
+
+/* A function that allows you to add food to the database */
+function add_food(){
+    include_once("food_class.php");
+				$name = $_POST['fn'];
+				$desc = $_POST['desc'];
+				$price = $_POST['fp'];
+				$ven = $_POST['vendor'];
+				$type = $_POST['type'];
+				$img = $_POST['image'];
+				$obj = new food();
+                if(!$obj->add_food($name,$desc,$price,$ven,$type,$img)){
+                    echo '{"result":0,"message":"failed to Add"}';
+                }else{
+                     echo '{"result":1,"message":"Success"}';
+                }
+			}
 
 ?>

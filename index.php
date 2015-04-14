@@ -1,3 +1,4 @@
-<?php
-header('location:login.php');
-?>
+<script>
+    window.location.replace("login.php");
+</script>
+

@@ -53,32 +53,6 @@
                                     </div>
                                 </div>
                             </form>
-                            <!--/ Form for Logging in -->
-                            <!-- Form for logging in --
-                            <form class="col s12 " action="operations/login_fun.php" method="post">
-                                <div class="row">
-                                    <div class="input-field col s12 ">
-                                        <i class="mdi-action-account-circle prefix"></i>
-                                        <input placeholder="Placeholder" id="first_name" type="text" class="validate" name="pn">
-                                        <label for="first_name">Username</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <i class="mdi-action-https prefix"></i>
-                                        <input placeholder="password" id="password" type="password" class="validate" name="pw">
-                                        <label for="password">Password</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12 i">
-                                        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-                                            <i class="mdi-content-send right"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                            --/ Form for Logging in -->
                         </div>
                     </div>
                 </div>

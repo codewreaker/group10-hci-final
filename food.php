@@ -97,6 +97,7 @@
                     <div class="col s12 m6 l3">
                         <div class="card">
                             <div class="card-image waves-effect waves-block waves-light">
+                              <div class="grey-out hide"><i class="mdi-av-not-interested"></i></div>
                                 <img class="activator" src="assets/images/food1.jpg">
                             </div>
                             <div class="card-content">
