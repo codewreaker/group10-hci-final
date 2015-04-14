@@ -19,9 +19,9 @@ $(document).ready(function() {
         var dataString = 'opt=1&pn=' + name + '&pw=' + pword;
         var obj = sendRequest(dataString);
         if (obj.result == 1) {
-            window.location.replace("food_form.php");
+            window.location.replace("food_form.html");
         } else {
-            alert("failed potoo");
+            alert("Wrong Username or Password");
         }
     }
 
