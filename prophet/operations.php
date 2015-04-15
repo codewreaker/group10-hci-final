@@ -1,13 +1,15 @@
 <?php
 
-// Option 1 login
-// Option 2 add food
-// Option 3 edit_food
+// Option 1 add_task
+// Option 2 delete_task
+// Option 3 edit_task
 // Option 4 increase or decrease rating
-// Option 5 set availabity
-// Option 6 session_settings
+// Option 5 delete_report
+// Option 6 edit_report
 // Option 7 fetch all contents
 // Option 8 fetch report
+
+// agatha changed case 3 and the update function at the bottom
 $option = $_REQUEST['opt'];
 
 switch($option){
@@ -18,19 +20,7 @@ switch($option){
          add_food();
         break;
     case 3:
-        include_once("t_task.php");
-        $obj = new t_task();
-        $task_id = $_POST['task_id'];
-        $task_name = $_POST['tn'];
-        $description = $_POST['desc'];
-        $task_personnel=$_POST['tp'];
-        $due_date = $_POST['td'];
-        if(!$obj->edit_task($task_id,$task_name, $description, $task_personnel, $due_date)){
-            echo '{"result":0,"message":"Failed to Update Task"}';
-            return;
-        } else{
-            echo '{"result":1,"message":"Succesfully Updated Task"}';
-        }
+        update_food();
         break;
     case 4:
         include_once("adb.php");
@@ -56,17 +46,28 @@ switch($option){
         $obj = new t_task();
         break;
     case 6:
-        session_start();
-        $username = $_SESSION["username"];
-        $pword = $_SESSION["password"];
-        $vendor = $_SESSION["vendor"];
-        $user_id = $_SESSION["user_id"];
-        echo '{"result":0,"session":[';
-        echo json_encode($_SESSION);
-        echo ']}';
+        include_once("t_report.php");
+        $obj = new t_task();
         break;
     case 7:
-        fetch_all_contents();
+        include_once("adb.php");
+        $obj = new adb();
+        $str_query = "SELECT * FROM c_meals";
+        if(!$obj->query($str_query)){
+            echo '{"result":0,"message":"failed to fetch data"}';
+            return;
+        }else{
+            $row=$obj->fetch();
+	       echo '{"result":1,"data":[';	/*start of json object*/
+	       while($row){
+		      echo json_encode($row);/*convert the result array to json object*/
+		      $row=$obj->fetch();
+		      if($row){
+			     echo ",";					/*if there are more rows, add comma*/
+		      }
+	       }
+	       echo "]}";
+        }
         break;
     case 8:
         include_once("t_report.php");
@@ -86,21 +87,16 @@ switch($option){
 
 /* A function that logs in with Ajax */
 function login(){
-    session_start();
     include_once("adb.php");
         $obj = new adb();
         $username = $_POST['pn'];
         $pword = md5($_POST['pw']);
-        $str_query = "SELECT user_id, username, pword, vendor from c_credentials";
+        $str_query = "SELECT username, pword, vendor from c_credentials";
         $count = mysql_num_rows($obj->query($str_query));
         $row = $obj->fetch();
         for($i=0;$i<$count;$i++){
             if($username==$row['username'] && $pword==$row['pword']){
                 echo '{"result":1,"message":"successfully logged in"}';
-                $_SESSION["username"] = $username;
-                $_SESSION["password"] = $pword;
-                $_SESSION["vendor"]=$row['vendor'];
-                $_SESSION["user_id"]=$row['user_id'];
                 return;
             }
             $row = $obj->fetch();
@@ -125,26 +121,22 @@ function add_food(){
                 }
 			}
 
-function fetch_all_contents(){
-     include_once("adb.php");
-        $obj = new adb();
-        $vendor = $_POST['vendor'];
-        $str_query = "SELECT * FROM c_meals WHERE vendor=$vendor";
-        if(!$obj->query($str_query)){
-            echo '{"result":0,"message":"failed to fetch data"}';
-            return;
-        }else{
-            $row=$obj->fetch();
-	       echo '{"result":1,"data":[';	/*start of json object*/
-	       while($row){
-		      echo json_encode($row);/*convert the result array to json object*/
-		      $row=$obj->fetch();
-		      if($row){
-			     echo ",";					/*if there are more rows, add comma*/
-		      }
-	       }
-	       echo "]}";
-        }
-}
+    /* A function that allows you to update food to the database */
+function update_food(){
+    include_once("food_class.php");
+                $id = $_POST['id'];
+                $name = $_POST['fn'];
+                $desc = $_POST['desc'];
+                $price = $_POST['fp'];
+                $ven = $_POST['vendor'];
+                $type = $_POST['type'];
+                $img = $_POST['image'];
+                $obj = new food();
+                if(!$obj->update_meal($id,$name,$desc,$price,$ven,$type,$img)){
+                    echo '{"result":0,"message":"failed to update"}';
+                }else{
+                     echo '{"result":1,"message":"Success"}';
+                }
+            }
 
 ?>

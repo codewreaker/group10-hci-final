@@ -1,14 +1,19 @@
     /* This is where all the ajax calls are made */
     $(document).ready(function() {
-        var selectedOption = "";
+
+        /* User Details */
+        var curr_user_name = "Guest";
+        var curr_user_password ="";
+        var curr_user_vendor ="Akornor";
+        var curr_user_id ="0";
+
 
 
         displayTableJSON();
         favorite();
+        login();
         /* Functions Needed */
-        $("#login-btn").click(function() {
-            login();
-        });
+
 
         $("#save-food").click(function() {
             save_food();
@@ -25,15 +30,18 @@
 
         // Get the data from the form and validate before returning
         function login() {
+        $("#login-btn").click(function() {
             var name = $("#login-username").val();
             var pword = $("#login-pword").val();
             var dataString = 'opt=1&pn=' + name + '&pw=' + pword;
             var obj = sendRequest(dataString);
             if (obj.result == 1) {
-                window.location.replace("food_form.html");
+                window.location.replace("food.html");
             } else {
                 alert("Wrong Username or Password");
             }
+        });
+
         }
 
         /* Gets data from the form and saves it in the database */
@@ -76,7 +84,9 @@
          *and appends it to the HTML body
          */
         function  displayTableJSON(){
-            var dataString = 'opt=7';
+            get_session();
+            $("#user-details").html(curr_user_name);
+            var dataString = 'opt=7&vendor="'+curr_user_vendor+'"';
             $obj = sendRequest(dataString);
             if ($obj.result == 1) {
                 var data = $obj.data;
@@ -135,6 +145,18 @@
                 displayTableJSON();
             });
         }
+
+        /* A function that returns session data after login */
+        function get_session(){
+            var temp = sendRequest("opt=6");
+            var obj = temp.session[0];
+            curr_user_name = obj.username;
+            curr_user_password = obj.password;
+            curr_user_vendor = obj.vendor;
+            curr_user_id = obj.user_id;
+        }
+
+
 
 
 
