@@ -2,16 +2,17 @@
     $(document).ready(function() {
 
         /* User Details */
-        var curr_user_name = "Guest";
+        var curr_user_name = "";
         var curr_user_password ="";
-        var curr_user_vendor ="Akornor";
-        var curr_user_id ="0";
+        var curr_user_vendor ="";
+        var curr_user_id ="";
 
 
 
         displayTableJSON();
         favorite();
         login();
+        categories();
         /* Functions Needed */
 
 
@@ -20,9 +21,26 @@
             displayTableJSON();
         });
 
+        $("body").on('click',' .mdi-action-exit-to-app',function(){
+            end_session();
+        });
 
 
 
+        function categories(){
+            $("body").on('click','.option-element',function(){
+                curr_user_vendor = $(this).children('div').children('p').html();
+                $("#curr_vendor").find("option").filter(function(){
+                return (($(this).val() == value) || ($(this).text() == value))
+                }).prop('selected', true);
+                login_as_guest();
+            });
+
+            $("body").on('change',function(){
+                curr_user_vendor = $("#curr_vendor option:selected").text();
+                login_as_guest();
+            });
+        }
 
 
 
@@ -30,7 +48,7 @@
 
         // Get the data from the form and validate before returning
         function login() {
-        $("#login-btn").click(function() {
+        $("body").on('click','#login-btn',function() {
             var name = $("#login-username").val();
             var pword = $("#login-pword").val();
             var dataString = 'opt=1&pn=' + name + '&pw=' + pword;
@@ -50,10 +68,12 @@
             var desc = $("#desc").val();
             var food_price = $("#food-price").val();
             var food_type = $("#food-type option:selected").text();
-            var vendor = $("#food-vendor option:selected").text();
+//            $("#food-vendor option").val(curr_user_vendor);
+            var vendor = curr_user_vendor;
             var image_path = $("#file")[0].files[0];
             var image = image_path.name;
             var dataString = 'opt=2&fn=' + food_name + '&fp=' + food_price + '&desc=' + desc + '&vendor=' + vendor + '&type=' + food_type + '&image=' + image;
+            alert(curr_user_vendor);
             var obj = sendRequest(dataString);
             if (obj.result == 1) {
                 alert(obj.message);
@@ -61,7 +81,7 @@
                 alert(obj.message);
             }
             displayTableJSON();
-            window.location.replace("food.html");
+            window.location.replace("index.html");
         }
 
 
@@ -148,14 +168,24 @@
 
         /* A function that returns session data after login */
         function get_session(){
-            var temp = sendRequest("opt=6");
+            var temp = sendRequest("opt=6&option=1");
             var obj = temp.session[0];
             curr_user_name = obj.username;
             curr_user_password = obj.password;
             curr_user_vendor = obj.vendor;
+            $("#food-vendor option").val(curr_user_vendor);
             curr_user_id = obj.user_id;
         }
 
+         /* A function that returns session data after login */
+        function end_session(){
+            var temp = sendRequest("opt=6&option=0");
+            alert(temp.message);
+        }
+
+        function login_as_guest(){
+            var temp = sendRequest('opt=6&option=0&vendor='+curr_user_vendor);
+        }
 
 
 

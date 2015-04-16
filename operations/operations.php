@@ -9,6 +9,7 @@
 // Option 7 fetch all contents
 // Option 8 fetch report
 $option = $_REQUEST['opt'];
+session_start();
 
 switch($option){
     case 1:
@@ -56,14 +57,25 @@ switch($option){
         $obj = new t_task();
         break;
     case 6:
-        session_start();
+        $option=$_POST['option'];
+        if($option==1){
         $username = $_SESSION["username"];
         $pword = $_SESSION["password"];
         $vendor = $_SESSION["vendor"];
         $user_id = $_SESSION["user_id"];
-        echo '{"result":0,"session":[';
+        echo '{"result":1,"session":[';
         echo json_encode($_SESSION);
         echo ']}';
+        }else if($option==0){
+            $_SESSION["username"] = "GUEST";
+            $_SESSION["password"] = "";
+            $_SESSION["vendor"]=$_POST['vendor'];
+            $_SESSION["user_id"]=0;
+            echo '{"result":0,"message":"Succesfully Logged Out"}';
+        }
+
+
+
         break;
     case 7:
         fetch_all_contents();
@@ -86,7 +98,6 @@ switch($option){
 
 /* A function that logs in with Ajax */
 function login(){
-    session_start();
     include_once("adb.php");
         $obj = new adb();
         $username = $_POST['pn'];
