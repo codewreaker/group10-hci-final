@@ -5,62 +5,87 @@
         var curr_user_name = "";
         var curr_user_password ="";
         var curr_user_vendor ="";
-        var curr_user_id ="";
+        var curr_user_id ="";       
 
 
-
-        displayTableJSON();
-        favorite();
-        login();
-        categories();
+        favorite();        
+        categories();        
         /* Functions Needed */
-
+        
+        if (top.location.pathname =="/group10-hci-final/food.html") {
+          displayTableJSON();
+          
+        }
+        if(top.location.pathname=="/group10-hci-final/food_form.html"){
+             get_session();
+             $("#food-vendor").html(curr_user_vendor);
+        }
+        
+        
+        $("body").on('click','#login-btn',function(){
+            login();
+        });
+        
 
         $("#save-food").click(function() {
             save_food();
-            displayTableJSON();
         });
 
         $("body").on('click',' .mdi-action-exit-to-app',function(){
             end_session();
         });
+        
+        
 
 
 
         function categories(){
-            $("body").on('click','.option-element',function(){
+            $("body").on('click','.option-element',function(){                
                 curr_user_vendor = $(this).children('div').children('p').html();
-                $("#curr_vendor").find("option").filter(function(){
-                return (($(this).val() == value) || ($(this).text() == value))
-                }).prop('selected', true);
-                login_as_guest();
+                 login_as_guest();    
             });
 
-            $("body").on('change',function(){
-                curr_user_vendor = $("#curr_vendor option:selected").text();
-                login_as_guest();
-            });
         }
 
 
-
+        /************************ login and logout details ************************/
 
 
         // Get the data from the form and validate before returning
         function login() {
-        $("body").on('click','#login-btn',function() {
             var name = $("#login-username").val();
             var pword = $("#login-pword").val();
             var dataString = 'opt=1&pn=' + name + '&pw=' + pword;
-            var obj = sendRequest(dataString);
+            var obj = sendLoginRequest(dataString);
             if (obj.result == 1) {
                 window.location.replace("food.html");
             } else {
                 alert("Wrong Username or Password");
             }
-        });
-
         }
+        
+        /* A function that logs out session data after login */
+        function logout(){
+            var temp = sendLoginRequest("opt=2");
+            alert(temp.message);
+        }
+
+        function login_as_guest(){
+            var temp = sendLoginRequest('opt=0&vendor='+curr_user_vendor);
+        }
+        
+        /* A function that returns session data after login */
+        function get_session(){
+            var temp = sendLoginRequest("opt=3");
+            var obj = temp.session[0];
+            curr_user_name = obj.username;
+            curr_user_password = obj.password;
+            curr_user_vendor = obj.vendor;            
+            curr_user_id = obj.user_id;
+        }
+        
+        
+        /********************* End of Session Precess *********************/
 
         /* Gets data from the form and saves it in the database */
         function save_food() {
@@ -68,20 +93,19 @@
             var desc = $("#desc").val();
             var food_price = $("#food-price").val();
             var food_type = $("#food-type option:selected").text();
-//            $("#food-vendor option").val(curr_user_vendor);
+//            var vendor = $("#food-vendor option:selected").text();
             var vendor = curr_user_vendor;
             var image_path = $("#file")[0].files[0];
             var image = image_path.name;
             var dataString = 'opt=2&fn=' + food_name + '&fp=' + food_price + '&desc=' + desc + '&vendor=' + vendor + '&type=' + food_type + '&image=' + image;
-            alert(curr_user_vendor);
+            
             var obj = sendRequest(dataString);
             if (obj.result == 1) {
                 alert(obj.message);
             } else if (obj.result == 0) {
                 alert(obj.message);
             }
-            displayTableJSON();
-            window.location.replace("index.html");
+            window.location.replace("food.html");
         }
 
 
@@ -97,15 +121,31 @@
             var result = $.parseJSON(obj.responseText);
             return result;
         }
+        
+        function sendLoginRequest(u){
+            var obj = $.ajax({
+                type: "POST",
+                url:"operations/login.php",
+                data: u,
+                async: false,
+                cache: false
+            });
+            var result = $.parseJSON(obj.responseText);
+            return result;
+        }
 
 
         /*
          *This part of the code creates a table with the JSON data
          *and appends it to the HTML body
          */
-        function  displayTableJSON(){
+        function displayTableJSON(){
             get_session();
             $("#user-details").html(curr_user_name);
+            if(curr_user_name=="GUEST"){
+                    $("#user-details").html("Welcome");
+                    $("#admin-add-food").hide();
+            }                     
             var dataString = 'opt=7&vendor="'+curr_user_vendor+'"';
             $obj = sendRequest(dataString);
             if ($obj.result == 1) {
@@ -166,26 +206,9 @@
             });
         }
 
-        /* A function that returns session data after login */
-        function get_session(){
-            var temp = sendRequest("opt=6&option=1");
-            var obj = temp.session[0];
-            curr_user_name = obj.username;
-            curr_user_password = obj.password;
-            curr_user_vendor = obj.vendor;
-            $("#food-vendor option").val(curr_user_vendor);
-            curr_user_id = obj.user_id;
-        }
+        
 
-         /* A function that returns session data after login */
-        function end_session(){
-            var temp = sendRequest("opt=6&option=0");
-            alert(temp.message);
-        }
-
-        function login_as_guest(){
-            var temp = sendRequest('opt=6&option=0&vendor='+curr_user_vendor);
-        }
+        
 
 
 

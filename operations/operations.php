@@ -13,7 +13,6 @@ session_start();
 
 switch($option){
     case 1:
-        login();
         break;
     case 2:
          add_food();
@@ -53,29 +52,8 @@ switch($option){
         }
         break;
     case 5:
-        include_once("t_report.php");
-        $obj = new t_task();
         break;
     case 6:
-        $option=$_POST['option'];
-        if($option==1){
-        $username = $_SESSION["username"];
-        $pword = $_SESSION["password"];
-        $vendor = $_SESSION["vendor"];
-        $user_id = $_SESSION["user_id"];
-        echo '{"result":1,"session":[';
-        echo json_encode($_SESSION);
-        echo ']}';
-        }else if($option==0){
-            $_SESSION["username"] = "GUEST";
-            $_SESSION["password"] = "";
-            $_SESSION["vendor"]=$_POST['vendor'];
-            $_SESSION["user_id"]=0;
-            echo '{"result":0,"message":"Succesfully Logged Out"}';
-        }
-
-
-
         break;
     case 7:
         fetch_all_contents();
@@ -94,29 +72,6 @@ switch($option){
         }
         break;
     default:
-}
-
-/* A function that logs in with Ajax */
-function login(){
-    include_once("adb.php");
-        $obj = new adb();
-        $username = $_POST['pn'];
-        $pword = md5($_POST['pw']);
-        $str_query = "SELECT user_id, username, pword, vendor from c_credentials";
-        $count = mysql_num_rows($obj->query($str_query));
-        $row = $obj->fetch();
-        for($i=0;$i<$count;$i++){
-            if($username==$row['username'] && $pword==$row['pword']){
-                echo '{"result":1,"message":"successfully logged in"}';
-                $_SESSION["username"] = $username;
-                $_SESSION["password"] = $pword;
-                $_SESSION["vendor"]=$row['vendor'];
-                $_SESSION["user_id"]=$row['user_id'];
-                return;
-            }
-            $row = $obj->fetch();
-            }
-            echo '{"result":0,"message":"failed to login"}';
 }
 
 /* A function that allows you to add food to the database */

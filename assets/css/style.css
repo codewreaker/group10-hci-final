@@ -48,6 +48,8 @@ nav .brand-logo{
     left: 80px;
 }
 
+
+
 .brand-logo i{
     position: relative;
     bottom:60px;
@@ -57,6 +59,13 @@ nav .brand-logo{
     text-align: center;
     font-size: 1.8em !important;
     color: #fff;
+}
+
+@media only screen and (max-width:1000px) {
+.brand-logo{
+   margin-left: 35%;
+    text-align:center;
+}
 }
 #user-details{
     position: relative;

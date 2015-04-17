@@ -14,7 +14,9 @@
     <!-- This is the Navbar -->
     <nav>
         <div class="nav-wrapper">
-            <a href="#" class=" brand-logo">Carte D'Aliment<i class="mdi-action-account-circle"></i><span id="user-details"></span></a>
+            <a href="#" class=" brand-logo">Carte D'Aliment
+                <div id="session-area"><i class="mdi-action-account-circle"></i><span id="user-details"></span></div>
+            </a>
             <div class="fixed-action-btn" style="top: 65px; right: 22px;">
                 <a href="#" class="button-floating btn-floating btn-large red" id="side-nav-btn"><i class="mdi-navigation-menu"></i></a>
                 <ul>
@@ -24,7 +26,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="food_form.html" class="btn-floating btn-large yellow darken-1 z-depth-2 tooltipped" data-tooltip="Add Food" data-position="left">
+                        <a id="admin-add-food" href="food_form.html" class="btn-floating btn-large yellow darken-1 z-depth-2 tooltipped" data-tooltip="Add Food" data-position="left">
                             <i class="large mdi-content-add"></i>
                         </a>
                     </li>
